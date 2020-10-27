@@ -39,6 +39,7 @@ def create_bot(auto_shard: bool):
 
     class Liara(cls):
         def __init__(self, *args, **kwargs):
+            self.intents = discord.Intents.all()
             self.redis = kwargs.pop('redis', None)
             self.name = kwargs.pop('name', 'Liara')
             if self.redis is None:
