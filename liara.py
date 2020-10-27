@@ -39,7 +39,6 @@ def create_bot(auto_shard: bool):
 
     class Liara(cls):
         def __init__(self, *args, **kwargs):
-            self.intents = discord.Intents.all()
             self.redis = kwargs.pop('redis', None)
             self.name = kwargs.pop('name', 'Liara')
             if self.redis is None:
@@ -393,7 +392,7 @@ if __name__ == '__main__':
     # if we want to make an auto-reboot loop now, it would be a hell of a lot easier now
     # noinspection PyUnboundLocalVariable
     liara = liara_cls('!', shard_id=cargs.shard_id, shard_count=cargs.shard_count, description=cargs.description,
-                      self_bot=cargs.selfbot, pm_help=None, max_messages=message_cache,
+                      self_bot=cargs.selfbot, pm_help=None, max_messages=message_cache, intents=discord.Intents.all(),
                       redis=redis_conn, cargs=cargs, test=cargs.test, name=cargs.name)  # liara-specific args
 
     async def run_bot():
